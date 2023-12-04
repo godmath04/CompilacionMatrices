@@ -20,7 +20,8 @@ void fceroMatriz(int MatrizCero[fila][columna])
 }
 
 // En esta bloque mi cerebro si procesa lo que esta sucediendo pero no logro comprenderlo totalmente
-void funoMatriz(int MatrizUno[fila][columna]){
+void funoMatriz(int MatrizUno[fila][columna])
+{
 
     fceroMatriz(MatrizUno);
     printf("\n\n");
@@ -38,23 +39,36 @@ void funoMatriz(int MatrizUno[fila][columna]){
         }
         printf("\n");
     }
-    
-    
 }
 
-
-void randomMatriz(int MatrizRandom[fila][columna]){
+void randomMatriz(int MatrizRandom[fila][columna])
+{
     srand(time(NULL));
     for (int i = 0; i < fila; i++)
     {
         for (int j = 0; j < columna; j++)
         {
-            MatrizRandom[i][j] = rand()% 100;
+            MatrizRandom[i][j] = rand() % 100;
             printf("%4d |", MatrizRandom[i][j]);
         }
         printf("\n");
     }
-    
+}
+
+void transpuestaMatriz(int MatrizTranspuesta[columna][fila])
+{
+    int MatrizR[fila][columna];
+    randomMatriz(MatrizR); //Aqui le llamamos y ya lstamos trabajando con Matriz R?
+    printf("\n");
+    for (int i = 0; i < columna; i++)
+    {
+        for (int j = 0; j < fila; j++)
+        {
+            MatrizTranspuesta[j][i] = MatrizR[i][j];
+            printf("%4d |", MatrizTranspuesta[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 int main()
@@ -76,6 +90,9 @@ int main()
 
     printf("Matriz generada de numeros aleatorios: \n");
     randomMatriz(matriz);
+    printf("\n\n");
 
+    printf("Matriz transpuesta de numeros aleatorios: \n");
+    transpuestaMatriz(matriz);
     return 0;
 }
